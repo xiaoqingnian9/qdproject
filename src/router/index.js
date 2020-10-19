@@ -6,7 +6,11 @@ Vue.use(VueRouter);
 
 const router=new VueRouter({
     //配置路由规则
-    routes:[{
+    routes:[
+        {
+            path:'/',
+            redirect:'/login'
+        },{
         path:'/login',
         component:Login
     },{
