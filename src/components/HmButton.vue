@@ -1,11 +1,16 @@
 <template>
-    <div class="hm-button">
+    <div class="hm-button" @click="clickFn">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
+    methods:{
+        clickFn(){
+            this.$emit('click');        
+        }
+    }
 
 }
 </script>
