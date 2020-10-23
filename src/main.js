@@ -12,6 +12,15 @@ axios.defaults.baseURL='http://127.0.0.1:3000'
 //把axios绑定到VUE的原型上，目的是把当前所有的组件和实例都可以通过this.$axios 访问到axios 对象 
 Vue.prototype.$axios=axios;
 
+//使用vant-ui 的处理 全局加载
+//import vant from 'vant';
+//import 'vant/lib/index.css'
+//Vue.use(vant);
+
+//按需加载  babel-plugin-import
+import { Toast ,Field } from 'vant';
+Vue.use(Toast);
+Vue.use(Field);
 
 
 Vue.config.productionTip = false

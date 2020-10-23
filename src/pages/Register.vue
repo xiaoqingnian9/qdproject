@@ -2,7 +2,7 @@
   <div class="regiter">
     <hm-header>注册</hm-header>
     <hm-logo></hm-logo>
-    <hm-button @click="register">注册</hm-button>
+  <van-field  ref="aa" label="文本"  placeholder="请输入用户名" />
   </div>
 </template>
 
@@ -12,6 +12,13 @@ export default {
       register(){
         console.log('我注册了');
       }
+    },data(){
+      return {
+        username :''
+      }
+    },
+    mounted(){
+      this.$refs.aa.focus();
     }
 }
 </script>

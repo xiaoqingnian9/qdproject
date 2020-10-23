@@ -36,16 +36,22 @@ export default {
         inputFn(e){
            this.$emit('input',e.target.value)
            let value=e.target.value;
-           if(this.rule){
-            if(this.rule.test(value)){
-                this.status='success' 
-            }else{
-                this.status='error'
-            }
-           }
-           console.log(this.rule+'-------------'+this.message);
+           this.validate(value);
+        },
+ //对表单进行检验
+   validate(value){
+    if(this.rule){
+        if(this.rule.test(value)){
+            this.status='success';
+            return true;
+        }else{
+            this.status='error';
+            return true;
         }
+        }
+    }
    },
+  
    
 }
 </script>
