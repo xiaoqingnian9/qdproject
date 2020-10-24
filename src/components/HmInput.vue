@@ -46,7 +46,7 @@ export default {
             return true;
         }else{
             this.status='error';
-            return true;
+            return false;
         }
         }
     }
@@ -59,7 +59,7 @@ export default {
 <style lang="less" scoped>
         .hm-input{
             height: 50px;
-            margin: 0 10px;
+            margin: 0 20px;
             input{
                 height: 30px;
                 line-height: 30px;
