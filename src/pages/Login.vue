@@ -26,6 +26,10 @@
 
 <script>
 export default {
+  created(){
+        this.username=this.$route.params.username;
+        this.password=this.$route.params.password;
+  },
   methods:{
     login(){
        let username=this.$refs.username.validate(this.username);
@@ -33,7 +37,6 @@ export default {
        if(!username ||  !password){
             return;
        }
-      
        
       this.$axios({
         method:'post',
@@ -44,13 +47,17 @@ export default {
         }
       }).then(res=>{
        // console.log(res.data)
-       if(res.data.statusCode===200){
-         this.$toast.success('登录成功')
-          this.$router.push('/user');
+       //es6的解构
+       const {statusCode,message,data} = res.data;
+       if(statusCode===200){
+         this.$toast.success(message);
+         localStorage.setItem('token',data.token);
+         localStorage.setItem('user_id',data.user.id); 
+         this.$router.push('/user');
        }else{
-          this.$toast.fail('用户名或密码错误')
+          this.$toast.fail(message)
        }
-      });;
+      });
     }
   },
   data(){

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import User from '../pages/User.vue';
+import EditUser from '../pages/EditUser.vue';
 Vue.use(VueRouter);
 
 const router=new VueRouter({
@@ -13,15 +14,37 @@ const router=new VueRouter({
             redirect:'/login'
         },{
         path:'/login',
-        component:Login
+        component:Login,
+        name:'login'
     },{
         path:'/register',
-        component:Register
+        component:Register,
+        name:'register'
     },{
         path:'/user',
-        component:User
+        component:User,
+        name:'user'
+    },{
+        path :'/editUser',
+        component:EditUser,
+        name:'editUser'
     }]
 });
+//存放所有授权的路径
+const authUrl=['/user','/editUser'];
 
+//注册全局导航路由
+router.beforeEach(function(to,from,next){
+    const token=localStorage.getItem('token');
+    if(authUrl.includes(to.path)  ){
+        if(token){
+            next();
+        }else{
+            next('/login')
+        }
+    }else{
+        next()
+    }
+});
 
 export default router;
