@@ -18,8 +18,8 @@
     </div>
   </div>
 
-  <hm-navbar title="我的关注" content='关注的用户'></hm-navbar>
-  <hm-navbar title="我的跟帖" content='跟帖/回复'></hm-navbar>
+  <hm-navbar title="我的关注" content='关注的用户' @click="$router.push('/myFollow')"></hm-navbar>
+  <hm-navbar title="我的跟帖" content='跟帖/回复' @click="$router.push('/myComment')"></hm-navbar>  
   <hm-navbar title="我的收藏" content='文章/视频'></hm-navbar>
   <hm-navbar title="设置" @click="CheckInfo"></hm-navbar>
   <hm-navbar title="退出" @click="returnFn"></hm-navbar>

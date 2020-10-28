@@ -4,6 +4,9 @@ import Login from '../pages/Login.vue';
 import Register from '../pages/Register.vue';
 import User from '../pages/User.vue';
 import EditUser from '../pages/EditUser.vue';
+import MyFollow from '../pages/MyFollow.vue';
+import MyComment from '../pages/MyComment.vue';
+
 Vue.use(VueRouter);
 
 const router=new VueRouter({
@@ -28,6 +31,15 @@ const router=new VueRouter({
         path :'/editUser',
         component:EditUser,
         name:'editUser'
+    },{
+        path :'/myFollow',
+        component:MyFollow,
+        name:'myFollow'
+    },{
+        path :'/myComment',
+        component:MyComment,
+        name:'myComment'
+        
     }]
 });
 //存放所有授权的路径

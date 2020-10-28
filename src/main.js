@@ -39,14 +39,22 @@ axios.interceptors.response.use(function(res){
    return res;
 });
 
+//配置axios的请求拦截器
+axios.interceptors.request.use(function(req){
+  //统一的给请求添加token
+  const token=localStorage.getItem('token');
+  req.headers.Authorization=token;
+  return req;
+});
+
 //把axios绑定到VUE的原型上，目的是把当前所有的组件和实例都可以通过this.$axios 访问到axios 对象 
 Vue.prototype.$axios=axios;
 
 
 //定义全局过滤器
 import moment from 'moment'
-Vue.filter('date',(input)=>{
-  return moment(input).format('YYYY-MM-DD');
+Vue.filter('date',(input,format='YYYY-MM-DD')=>{
+  return moment(input).format(format);
 });
 
 
